@@ -13,7 +13,7 @@ public:
         }
         int maxcount = count;
 
-        while(r < s.size()){
+        while(r < s.size() - 1){
             //slide 
              if(s[l] == 'a' || s[l] == 'e' || s[l] == 'i' || s[l] == 'o' || s[l] == 'u')
              count --;
