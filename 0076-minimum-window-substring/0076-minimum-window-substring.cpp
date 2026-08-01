@@ -10,6 +10,9 @@ public:
         int cnt = 0;
         int sindex = -1;
 
+        //  for(char ch : t)
+        //     mp[ch]++;
+
         for (int i = 0; i < m; i++)
             mp[t[i]]++;
 
