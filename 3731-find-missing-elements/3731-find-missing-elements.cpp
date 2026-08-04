@@ -7,12 +7,12 @@ public:
        
         vector<int> ans;
 
-        for ( int j = 0 ; j < n ; j ++){
+        for ( int j = 0 ; j < n ; j ++ , min ++){
              while( min < nums[j]){
                 ans.push_back(min);
-                min++;
+                j--;
              }
-             min = nums[j] + 1;
+         
             
         }
          return ans;
