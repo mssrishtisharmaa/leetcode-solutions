@@ -1,47 +1,51 @@
 class Solution {
+    private: 
+void bfs( int row , int col ,vector<vector<char>>& grid ){
+    queue<pair<int , int>> q;
+     int dr[] = {1 , -1, 0 ,0};
+    int dc[] = {0, 0, -1 , 1};
+       int n = grid.size();
+        int m = grid[0].size(); 
+    q.push({row , col});
+    grid[row][col] = 0;
+
+    while ( !q.empty()){
+   int r = q.front().first;
+int c = q.front().second;
+    q.pop()  ;   
+
+    //neigbouts 
+    for ( int k = 0 ; k < 4; k ++){
+        int nr = r + dr[k];
+        int nc = c + dc[k];
+
+        if( nr >= 0 && nr < n && nc >= 0 && nc < m && grid[nr][nc] == '1'){
+            q.push({nr, nc});
+            grid[nr][nc] = '0';
+        }
+    }
+    
+    }
+
+}
 public:
     int numIslands(vector<vector<char>>& grid) {
 
-        int m = grid.size();
-        int n = grid[0].size();
-        int islands = 0;
+        int n = grid.size();
+        int m = grid[0].size();
 
-        vector<pair<int, int>> dir = {{1,0},{-1,0},{0,1},{0,-1}};
+        int cnt = 0 ;
 
-        for (int i = 0; i < m; i++) {
-
-            for (int j = 0; j < n; j++) {
-
-                if (grid[i][j] == '1') {
-
-                    islands++;
-
-                    queue<pair<int,int>> q;
-                    q.push({i,j});
-                    grid[i][j] = '0';
-
-                    while (!q.empty()) {
-
-                        auto [x,y] = q.front();
-                        q.pop();
-
-                        for (auto [dx,dy] : dir) {
-
-                            int nx = x + dx;
-                            int ny = y + dy;
-
-                            if (nx >= 0 && ny >= 0 && nx < m && ny < n &&
-                                grid[nx][ny] == '1') {
-
-                                grid[nx][ny] = '0';
-                                q.push({nx,ny});
-                            }
-                        }
-                    }
+        for ( int i = 0 ; i < n ; i ++){
+            for ( int j = 0 ; j < m ; j++){
+                if (grid[i][j] == '1'){
+                    cnt++;
+                    bfs( i , j , grid);
+                    
                 }
             }
         }
-
-        return islands;
+        return cnt;
+        
     }
 };
