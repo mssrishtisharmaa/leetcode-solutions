@@ -10,7 +10,6 @@ public:
                 sum += customers[i];
         }
 
-        // first window sum
         while (r < minutes) {
             if (grumpy[r] == 1)
                 sum += customers[r];
@@ -21,7 +20,6 @@ public:
         while (r < grumpy.size()) {
             if (grumpy[r] == 1)
                 sum += customers[r];
-            // window sum (shrink)
             if (grumpy[l] == 1) {
                 sum -= customers[l];
             }
